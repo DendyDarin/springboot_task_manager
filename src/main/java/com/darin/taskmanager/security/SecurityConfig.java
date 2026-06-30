@@ -26,7 +26,7 @@ public class SecurityConfig {
             // Handle API Access and Allowed API Method
             cors(cors -> cors.configurationSource(request -> {
                 CorsConfiguration config = new CorsConfiguration();
-                config.addAllowedOriginPattern(String.valueOf(List.of("*")));
+                config.setAllowedOriginPatterns(List.of("*"));
                 config.setAllowedMethods(List.of("GET", "POST", "UPDATE", "DELETE", "OPTIONS"));
                 config.setAllowedHeaders(List.of("*"));
                 config.setAllowCredentials(true);
@@ -39,7 +39,7 @@ public class SecurityConfig {
 
             // Register router to ignore/protect
             .authorizeHttpRequests(auth ->
-                auth.requestMatchers("api/auth/login", "api/auth/register")
+                auth.requestMatchers("/api/auth/login", "/api/auth/register")
                     .permitAll()
                     .anyRequest()
                     .authenticated())
@@ -51,7 +51,7 @@ public class SecurityConfig {
 
             // Handle Logout Session
             .logout(logout -> logout
-                .logoutUrl("api/auth/logout")
+                .logoutUrl("/api/auth/logout")
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")

@@ -8,7 +8,7 @@ import lombok.Data;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class TaskDTO {
 
-    private long id;
+    private Long id;
 
     private String title;
 
@@ -18,5 +18,5 @@ public class TaskDTO {
 
     private boolean isCompleted;
 
-    private UserDTO user;
+    // private UserDTO user;
 }
