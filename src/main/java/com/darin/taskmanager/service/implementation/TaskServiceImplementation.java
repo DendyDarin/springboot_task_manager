@@ -98,7 +98,9 @@ public class TaskServiceImplementation implements TaskService {
     }
 
     private TaskDTO mapTaskToTaskDTO(Task task) {
+
         TaskDTO taskDTO = new TaskDTO();
+
         taskDTO.setId(task.getId());
         taskDTO.setTitle(task.getTitle());
         taskDTO.setDescription(task.getDescription());
